@@ -54,11 +54,11 @@ class GitHubJSONParser {
         for userRecord in items {
           
           if let login = userRecord["login"] as? String,
-            url = userRecord["url"] as? String
+            avatar_url = userRecord["avatar_url"] as? String
+            //id = userRecord["id"] as? String
             
           {
-            let user = User(login: login, url: url)
-            
+            let user = User(login: login, avatar_url: avatar_url, avatar_image: nil)
             users.append(user)
           } else {
             println("There is a problem with your data")

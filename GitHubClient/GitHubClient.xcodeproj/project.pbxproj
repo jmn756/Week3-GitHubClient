@@ -11,6 +11,10 @@
 		B0514ABD1B84F61200B4B521 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0514ABC1B84F61200B4B521 /* AuthService.swift */; };
 		B0514ABF1B84F68700B4B521 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0514ABE1B84F68700B4B521 /* KeyChainService.swift */; };
 		B0514AC11B84F79F00B4B521 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0514AC01B84F79F00B4B521 /* LoginViewController.swift */; };
+		B0514AC31B851EAF00B4B521 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0514AC21B851EAF00B4B521 /* Constants.swift */; };
+		B0514AC51B86472A00B4B521 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0514AC41B86472A00B4B521 /* UsersViewController.swift */; };
+		B0514AC71B86498B00B4B521 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0514AC61B86498B00B4B521 /* AvatarCell.swift */; };
+		B0514AC91B864E8600B4B521 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0514AC81B864E8600B4B521 /* ImageResizer.swift */; };
 		B096A31A1B83B74900BDA3C8 /* RepoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B096A3191B83B74900BDA3C8 /* RepoCell.swift */; };
 		B0B39EAB1B8278AC00F744BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B39EAA1B8278AC00F744BE /* AppDelegate.swift */; };
 		B0B39EB01B8278AC00F744BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B39EAE1B8278AC00F744BE /* Main.storyboard */; };
@@ -40,6 +44,10 @@
 		B0514ABC1B84F61200B4B521 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		B0514ABE1B84F68700B4B521 /* KeyChainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		B0514AC01B84F79F00B4B521 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B0514AC21B851EAF00B4B521 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B0514AC41B86472A00B4B521 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		B0514AC61B86498B00B4B521 /* AvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
+		B0514AC81B864E8600B4B521 /* ImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		B096A3191B83B74900BDA3C8 /* RepoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoCell.swift; sourceTree = "<group>"; };
 		B0B39EA51B8278AC00F744BE /* GitHubClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B39EA91B8278AC00F744BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				B0B39EAE1B8278AC00F744BE /* Main.storyboard */,
+				B0514AC61B86498B00B4B521 /* AvatarCell.swift */,
 				B096A3191B83B74900BDA3C8 /* RepoCell.swift */,
 			);
 			name = View;
@@ -145,6 +154,7 @@
 		B0B39ECB1B82798A00F744BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B0514AC81B864E8600B4B521 /* ImageResizer.swift */,
 				B0B39ED11B8287BB00F744BE /* GitHubService.swift */,
 				B0D3FDFE1B83A282007F9E8D /* GitHubJSONParser.swift */,
 				B0D3FE001B83A2DE007F9E8D /* Repo.swift */,
@@ -152,6 +162,7 @@
 				B0514ABA1B84F17700B4B521 /* Keys.swift */,
 				B0514ABC1B84F61200B4B521 /* AuthService.swift */,
 				B0514ABE1B84F68700B4B521 /* KeyChainService.swift */,
+				B0514AC21B851EAF00B4B521 /* Constants.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -162,6 +173,7 @@
 				B0B39ECD1B82830600F744BE /* MenuTableViewController.swift */,
 				B0B39ECF1B8283D400F744BE /* RepositoryViewController.swift */,
 				B0514AC01B84F79F00B4B521 /* LoginViewController.swift */,
+				B0514AC41B86472A00B4B521 /* UsersViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -269,10 +281,14 @@
 				B0514AC11B84F79F00B4B521 /* LoginViewController.swift in Sources */,
 				B0B39ECE1B82830600F744BE /* MenuTableViewController.swift in Sources */,
 				B0B39ED01B8283D400F744BE /* RepositoryViewController.swift in Sources */,
+				B0514AC51B86472A00B4B521 /* UsersViewController.swift in Sources */,
+				B0514AC91B864E8600B4B521 /* ImageResizer.swift in Sources */,
+				B0514AC71B86498B00B4B521 /* AvatarCell.swift in Sources */,
 				B0B39ED21B8287BB00F744BE /* GitHubService.swift in Sources */,
 				B0D3FE011B83A2DE007F9E8D /* Repo.swift in Sources */,
 				B0B39EAB1B8278AC00F744BE /* AppDelegate.swift in Sources */,
 				B0D3FDFF1B83A282007F9E8D /* GitHubJSONParser.swift in Sources */,
+				B0514AC31B851EAF00B4B521 /* Constants.swift in Sources */,
 				B0D3FE031B83A2EF007F9E8D /* User.swift in Sources */,
 				B0514ABF1B84F68700B4B521 /* KeyChainService.swift in Sources */,
 				B0514ABD1B84F61200B4B521 /* AuthService.swift in Sources */,

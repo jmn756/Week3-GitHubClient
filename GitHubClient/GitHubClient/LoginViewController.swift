@@ -13,17 +13,14 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "newToken", name: kTokenNotification, object: nil)
+      
     }
   
   
     override func viewDidAppear(animated: Bool) {
       super.viewDidAppear(animated)
-      if let token = KeychainService.loadToken() {
       
-      } else {
-        AuthService.performInitialRequest()
-      }
    }
 
 
@@ -33,9 +30,20 @@ class LoginViewController: UIViewController {
     }
     
 
-  @IBAction func loginButton(sender: AnyObject) {
+  func newToken() {
+    performSegueWithIdentifier("PresentMenu", sender: nil)
   }
-    /*
+  
+  
+  @IBAction func loginButton(sender: AnyObject) {
+    if let token = KeychainService.loadToken() {
+      
+    } else {
+      AuthService.performInitialRequest()
+    }
+  }
+  
+  /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -44,5 +52,9 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: kTokenNotification, object: nil)
+  }
 
 }

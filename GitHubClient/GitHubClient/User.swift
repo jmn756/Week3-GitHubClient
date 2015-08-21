@@ -6,10 +6,11 @@
 //  Copyright (c) 2015 Joey Nessif. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct User {
   let login: String
-  let url: String
-  
+  let avatar_url: String
+  var avatar_image: UIImage?
+  //let id: String
 }

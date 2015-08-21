@@ -84,6 +84,71 @@
             </objects>
             <point key="canvasLocation" x="2259" y="297"/>
         </scene>
+        <!--Users View Controller-->
+        <scene sceneID="auf-e5-FwS">
+            <objects>
+                <viewController id="59F-8A-bvA" customClass="UsersViewController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fno-jU-717"/>
+                        <viewControllerLayoutGuide type="bottom" id="GMw-Sy-xrh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ygi-uy-fIH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="WMD-Yk-U8G">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yei-Iv-GBd">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eKx-f7-Ogq">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="ayw-If-39j" customClass="AvatarCell" customModule="GitHubClient" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NEA-e2-p3a">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="imageView" destination="NEA-e2-p3a" id="Pip-Ey-mDM"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Yei-Iv-GBd" secondAttribute="trailing" constant="-16" id="Kl2-a6-cLe"/>
+                            <constraint firstItem="GMw-Sy-xrh" firstAttribute="top" secondItem="Yei-Iv-GBd" secondAttribute="bottom" id="Nxd-lf-IjP"/>
+                            <constraint firstItem="Yei-Iv-GBd" firstAttribute="leading" secondItem="ygi-uy-fIH" secondAttribute="leadingMargin" constant="-16" id="Ym1-fz-pDl"/>
+                            <constraint firstItem="WMD-Yk-U8G" firstAttribute="top" secondItem="Fno-jU-717" secondAttribute="bottom" id="bIN-Ku-B6a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WMD-Yk-U8G" secondAttribute="trailing" constant="-16" id="nOW-wX-Fq8"/>
+                            <constraint firstItem="Yei-Iv-GBd" firstAttribute="top" secondItem="WMD-Yk-U8G" secondAttribute="bottom" id="qao-qc-oqh"/>
+                            <constraint firstItem="WMD-Yk-U8G" firstAttribute="leading" secondItem="ygi-uy-fIH" secondAttribute="leadingMargin" constant="-16" id="so1-6f-Smr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Yei-Iv-GBd" id="dLW-Fd-fGR"/>
+                        <outlet property="searchBar" destination="WMD-Yk-U8G" id="afc-ko-fRU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lhb-Vj-lPW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1936" y="811"/>
+        </scene>
         <!--Menu Table View Controller-->
         <scene sceneID="act-Zd-jNb">
             <objects>
@@ -153,6 +218,9 @@
                                                 <constraint firstItem="oDB-mZ-Loa" firstAttribute="leading" secondItem="Dbe-Sc-uLd" secondAttribute="leadingMargin" id="zua-mz-epj"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="59F-8A-bvA" kind="show" identifier="ShowUsers" id="esK-hz-9qK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -244,7 +312,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzd-Vv-YcJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="457" y="862"/>
+            <point key="canvasLocation" x="455" y="958"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="0Rp-1x-AK0">
@@ -274,6 +342,9 @@
                             <constraint firstAttribute="centerY" secondItem="zpt-vj-fAk" secondAttribute="centerY" id="gMk-Oz-MJR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="iJR-7w-jy7" kind="presentation" identifier="PresentMenu" id="tF9-Kv-kMY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awl-D6-isQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

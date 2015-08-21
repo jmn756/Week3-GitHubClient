@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //Sample code
     if let token = KeychainService.loadToken() {
       //KeychainService.saveToken(token)
+      
+      //Request the token value -- put in Global???
+      
       println("token exists")
     } else {
       let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
