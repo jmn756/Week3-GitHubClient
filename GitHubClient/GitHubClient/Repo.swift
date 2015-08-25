@@ -11,4 +11,5 @@ import Foundation
 struct Repo {
   let name: String
   let url: String
+  let htmlurl: String
 }

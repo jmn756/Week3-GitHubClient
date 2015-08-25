@@ -21,13 +21,32 @@ class UsersViewController: UIViewController {
     super.viewDidLoad()
     searchBar.delegate = self
     collectionView.dataSource = self
+    navigationItem.title = "Users Search"
   }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    collectionView.reloadData()
+    navigationController?.delegate = self
+    
   }
   
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    navigationController?.delegate = nil
+    
+  }
+  
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "ShowUserDetail" {
+      if let destination = segue.destinationViewController as? DetailViewController,
+        indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath {
+          let user = users[indexPath.row]
+          destination.selectedUser = user
+      }
+    }
+  }
+
   
 }
 
@@ -60,7 +79,7 @@ extension UsersViewController : UICollectionViewDataSource {
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("collectionCell", forIndexPath: indexPath) as! AvatarCell
     
       cell.imageView.image = nil
-     // cell.alpha = 0
+      //cell.alpha = 0
     
       cell.tag++
       let tag = cell.tag
@@ -79,6 +98,7 @@ extension UsersViewController : UICollectionViewDataSource {
                   self.users[indexPath.row].avatar_image = image
                 if cell.tag == tag {
                   cell.imageView.image = image
+                  //cell.alpha = 1
                 }
               })
               }
@@ -91,31 +111,14 @@ extension UsersViewController : UICollectionViewDataSource {
 }
 
 
-  //MARK: UICollectionViewDelegate
-extension UsersViewController : UICollectionViewDelegate {
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-      
-      
-//      let options = PHImageRequestOptions()
-//      options.synchronous = true
-//      
-//      if let asset = fetchResult[indexPath.row] as? PHAsset {
-//        imageQueue.addOperationWithBlock({ () -> Void in
-//          
-//
-//            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//              if let image = image {
-//                self.delegate?.galleryViewController(self, didSelectImage: image)
-//                self.navigationController?.popViewControllerAnimated(true)
-//              }
-//            })
-//          }
-//        })
-//        
-//      }
-//      
+extension UsersViewController : UINavigationControllerDelegate {
+  func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    
+    
+    return toVC is DetailViewController ? AnimationController() : nil
+    
   }
-  }
+}
 
  
 

@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="HY1-0D-pOU">
+                            <searchBar contentMode="redraw" placeholder="Enter Repository Search Text" translatesAutoresizingMaskIntoConstraints="NO" id="HY1-0D-pOU">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Repos" rowHeight="55" id="sYu-bo-gBQ" customClass="RepoCell" customModule="GitHubClient" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Repos" rowHeight="55" id="sYu-bo-gBQ" customClass="RepoCell" customModule="GitHubClient" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sYu-bo-gBQ" id="trJ-vQ-cEM">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -59,6 +59,7 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="gVP-EE-SQS" id="rx0-Ap-MHf"/>
                                             <outlet property="urlLabel" destination="kpy-ep-gca" id="41U-Yd-zKE"/>
+                                            <segue destination="i1G-8q-57T" kind="show" identifier="ShowWebPage" id="lMb-0T-OPm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -96,12 +97,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="WMD-Yk-U8G">
+                            <searchBar contentMode="redraw" placeholder="Enter User Search Text" translatesAutoresizingMaskIntoConstraints="NO" id="WMD-Yk-U8G">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yei-Iv-GBd">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eKx-f7-Ogq">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -124,6 +126,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="imageView" destination="NEA-e2-p3a" id="Pip-Ey-mDM"/>
+                                            <segue destination="aPe-eF-25A" kind="show" identifier="ShowUserDetail" id="R0q-4L-2BT"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -147,7 +150,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lhb-Vj-lPW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1936" y="811"/>
+            <point key="canvasLocation" x="2259" y="1033"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="t6i-wW-vX9">
+            <objects>
+                <viewController id="aPe-eF-25A" customClass="DetailViewController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9hG-vd-jbS"/>
+                        <viewControllerLayoutGuide type="bottom" id="BEf-db-q9m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0BL-g1-6VS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mxF-T9-6pm">
+                                <rect key="frame" x="16" y="83" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="9iK-D6-F56"/>
+                                    <constraint firstAttribute="height" constant="100" id="Ibj-2T-fIP"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mxF-T9-6pm" firstAttribute="top" secondItem="9hG-vd-jbS" secondAttribute="bottom" constant="19" id="pAz-g5-dcc"/>
+                            <constraint firstItem="mxF-T9-6pm" firstAttribute="leading" secondItem="0BL-g1-6VS" secondAttribute="leadingMargin" id="yrG-U7-lbh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="mxF-T9-6pm" id="Bfv-E0-ZX4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NCm-o2-KC2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1738" y="1079"/>
         </scene>
         <!--Menu Table View Controller-->
         <scene sceneID="act-Zd-jNb">
@@ -281,6 +318,9 @@
                                                 <constraint firstItem="KPb-LQ-F7K" firstAttribute="leading" secondItem="vHJ-aN-1Rf" secondAttribute="trailing" constant="14" id="fK3-Uw-0wH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="2MD-ss-uSr" kind="show" identifier="ShowMyProfile" id="CBh-vk-UGK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -295,6 +335,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EJX-8l-l9G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1515" y="306"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="YO9-bC-9bu">
+            <objects>
+                <viewController id="i1G-8q-57T" customClass="WebViewController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r1V-oy-vj9"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jpq-df-nPa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hWm-Ra-4Tw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggP-fP-MOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3055" y="341"/>
+        </scene>
+        <!--My Profile View Controller-->
+        <scene sceneID="0lh-fb-8HQ">
+            <objects>
+                <viewController id="2MD-ss-uSr" customClass="MyProfileViewController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OCg-d2-9mG"/>
+                        <viewControllerLayoutGuide type="bottom" id="fR0-Bn-0ai"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2yF-qQ-FcA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zr0-YZ-yfQ">
+                                <rect key="frame" x="16" y="72" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="278-u2-MbS"/>
+                                    <constraint firstAttribute="height" constant="100" id="Lfg-rA-it3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zr0-YZ-yfQ" firstAttribute="top" secondItem="OCg-d2-9mG" secondAttribute="bottom" constant="8" id="Ofs-oS-9JB"/>
+                            <constraint firstItem="Zr0-YZ-yfQ" firstAttribute="leading" secondItem="2yF-qQ-FcA" secondAttribute="leadingMargin" id="mpz-cx-E36"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SFg-rH-0tF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1257" y="1220"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Akp-rM-30v">

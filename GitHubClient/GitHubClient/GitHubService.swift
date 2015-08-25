@@ -11,7 +11,6 @@ import Foundation
 class GitHubService {
   class func repositoriesForSearchTerm(searchTerm: String, completionHandler: (String?, [Repo]?) ->Void) {
     let baseURL = "https://api.github.com/search/repositories"
-   // let baseURL = "http://localhost:3000"
     let finalURL = baseURL + "?q=\(searchTerm)"
     var repos = [Repo]()
     
@@ -24,7 +23,6 @@ class GitHubService {
           case 200...299:
                repos = GitHubJSONParser.repoInfoFromJSONData(data)!
                completionHandler(nil, repos)
-               println(repos.count)
           case 400...499:
                println()
           case 500...599:
@@ -40,7 +38,6 @@ class GitHubService {
   
   class func usersForSearchTerm(searchTerm: String, completionHandler: (String?, [User]?) ->Void) {
     let baseURL = "https://api.github.com/search/users"
-    // let baseURL = "http://localhost:3000"
     let finalURL = baseURL + "?q=\(searchTerm)"
     var users = [User]()
     
@@ -53,7 +50,6 @@ class GitHubService {
           case 200...299:
             users = GitHubJSONParser.userInfoFromJSONData(data)!
             completionHandler(nil, users)
-            println(users.count)
           case 400...499:
             println()
           case 500...599:
@@ -67,7 +63,32 @@ class GitHubService {
   }
 
   
-  
+  class func getAuthenticatedUser(completionHandler: (String?, AuthUser?) ->Void) {
+    let baseURL = "https://api.github.com/user"
+    var authUser: AuthUser!
+    
+    if let url = NSURL(string: baseURL) {
+      NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+        if let error = error {
+          println("error")
+        } else if let httpResponse = response as? NSHTTPURLResponse {
+          println(httpResponse.statusCode)
+          switch httpResponse.statusCode {
+          case 200...299:
+            authUser = GitHubJSONParser.authUserInfoFromJSONData(data)!
+            completionHandler(nil, authUser)
+          case 400...499:
+            println("400")
+          case 500...599:
+            println("500")
+          default:
+            println("default")
+          }
+        }
+      }).resume()
+    }
+  }
+
   
   
   

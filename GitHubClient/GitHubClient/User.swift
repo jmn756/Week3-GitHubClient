@@ -12,5 +12,5 @@ struct User {
   let login: String
   let avatar_url: String
   var avatar_image: UIImage?
-  //let id: String
+  let id: Int
 }
