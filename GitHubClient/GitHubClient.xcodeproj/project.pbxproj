@@ -13,6 +13,7 @@
 		B00640C61B8930A100E29B41 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00640C51B8930A100E29B41 /* DetailViewController.swift */; };
 		B00640C81B8954E700E29B41 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00640C71B8954E700E29B41 /* ImageService.swift */; };
 		B00640CA1B8AD79E00E29B41 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00640C91B8AD79E00E29B41 /* WebViewController.swift */; };
+		B00640CE1B8C37FA00E29B41 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00640CD1B8C37FA00E29B41 /* Extensions.swift */; };
 		B0514ABB1B84F17700B4B521 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0514ABA1B84F17700B4B521 /* Keys.swift */; };
 		B0514ABD1B84F61200B4B521 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0514ABC1B84F61200B4B521 /* AuthService.swift */; };
 		B0514ABF1B84F68700B4B521 /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0514ABE1B84F68700B4B521 /* KeyChainService.swift */; };
@@ -52,6 +53,7 @@
 		B00640C51B8930A100E29B41 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B00640C71B8954E700E29B41 /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		B00640C91B8AD79E00E29B41 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		B00640CD1B8C37FA00E29B41 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B0514ABA1B84F17700B4B521 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		B0514ABC1B84F61200B4B521 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		B0514ABE1B84F68700B4B521 /* KeyChainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				B0514ABE1B84F68700B4B521 /* KeyChainService.swift */,
 				B0514AC21B851EAF00B4B521 /* Constants.swift */,
 				B00640C71B8954E700E29B41 /* ImageService.swift */,
+				B00640CD1B8C37FA00E29B41 /* Extensions.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B00640CE1B8C37FA00E29B41 /* Extensions.swift in Sources */,
 				B0514AC11B84F79F00B4B521 /* LoginViewController.swift in Sources */,
 				B00640CA1B8AD79E00E29B41 /* WebViewController.swift in Sources */,
 				B0B39ECE1B82830600F744BE /* MenuTableViewController.swift in Sources */,
