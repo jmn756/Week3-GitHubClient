@@ -12,20 +12,17 @@ import WebKit
 //Brad Johnson code
 class WebViewController: UIViewController {
   
-    var selectedURL: String!
-  
+  var selectedURL: String!
+
   override func viewDidLoad() {
-        super.viewDidLoad()
+      super.viewDidLoad()
 
       let webView = WKWebView(frame: view.frame)
       view.addSubview(webView)
       
       let urlRequest = NSURLRequest(URL: NSURL(string: selectedURL)!)
-      webView.loadRequest(urlRequest)    }
+      webView.loadRequest(urlRequest)
+  }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
 }

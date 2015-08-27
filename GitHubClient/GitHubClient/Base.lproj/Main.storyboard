@@ -59,7 +59,6 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="gVP-EE-SQS" id="rx0-Ap-MHf"/>
                                             <outlet property="urlLabel" destination="kpy-ep-gca" id="41U-Yd-zKE"/>
-                                            <segue destination="i1G-8q-57T" kind="show" identifier="ShowWebPage" id="lMb-0T-OPm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -79,6 +78,7 @@
                     <connections>
                         <outlet property="searchBar" destination="HY1-0D-pOU" id="lj6-0g-jp1"/>
                         <outlet property="tableView" destination="sRK-HF-Wh0" id="jJM-9Q-kin"/>
+                        <segue destination="i1G-8q-57T" kind="show" identifier="ShowWebPage" id="NQf-jJ-lBi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ap-lb-JD5" userLabel="First Responder" sceneMemberID="firstResponder"/>
