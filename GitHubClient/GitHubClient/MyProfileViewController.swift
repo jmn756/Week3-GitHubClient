@@ -10,6 +10,8 @@ import UIKit
 
 class MyProfileViewController: UIViewController {
 
+  var authUser: AuthUser!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
       navigationItem.title = "My Profile"

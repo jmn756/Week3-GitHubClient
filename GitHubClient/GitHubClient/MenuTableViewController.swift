@@ -24,15 +24,15 @@ class MenuTableViewController: UITableViewController {
   
     // MARK: - Navigation
 
-//  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//    if segue.identifier == "ShowMyProfile" {
-//      if let destination = segue.destinationViewController as? DetailViewController {
-//         GitHubService.getAuthenticatedUser({(String, authUser) -> (Void) in
-//           if let authUser = authUser {
-//              destination.authUser = authUser
-//           }
-//        })
-//      }
-//    }
-//  }
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "ShowMyProfile" {
+      if let destination = segue.destinationViewController as? MyProfileViewController {
+         GitHubService.getAuthenticatedUser({(String, authUser) -> (Void) in
+           if let authUser = authUser {
+              destination.authUser = authUser
+           }
+        })
+      }
+    }
+  }
 }

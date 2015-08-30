@@ -17,18 +17,14 @@ class GitHubService {
     if let url = NSURL(string: finalURL) {
       NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
         if let error = error {
-          println("error")
+          println("An error has occurred")
         } else if let httpResponse = response as? NSHTTPURLResponse {
-          switch httpResponse.statusCode {
-          case 200...299:
-               repos = GitHubJSONParser.repoInfoFromJSONData(data)!
-               completionHandler(nil, repos)
-          case 400...499:
-               println()
-          case 500...599:
-              println()
-          default:
-              println()
+          let rv = self.checkStatusCodes(httpResponse.statusCode)
+          if rv == "OK" {
+            repos = GitHubJSONParser.repoInfoFromJSONData(data)!
+            completionHandler(nil, repos)
+          } else {
+            completionHandler(rv, nil)
           }
         }
       }).resume()
@@ -44,18 +40,14 @@ class GitHubService {
     if let url = NSURL(string: finalURL) {
       NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
         if let error = error {
-          println("error")
+          println("An error has occurred")
         } else if let httpResponse = response as? NSHTTPURLResponse {
-          switch httpResponse.statusCode {
-          case 200...299:
+          let rv = self.checkStatusCodes(httpResponse.statusCode)
+          if rv == "OK" {
             users = GitHubJSONParser.userInfoFromJSONData(data)!
             completionHandler(nil, users)
-          case 400...499:
-            println()
-          case 500...599:
-            println()
-          default:
-            println()
+          } else {
+            completionHandler(rv, nil)
           }
         }
       }).resume()
@@ -64,49 +56,46 @@ class GitHubService {
 
   
   class func getAuthenticatedUser(completionHandler: (String?, AuthUser?) ->Void) {
-    let baseURL = "https://api.github.com/user"
+    let baseURL = "https://api.github.com/"
+    let token = KeychainService.loadToken()
+    let finalURL = baseURL + "?access_token=\(token)"
     var authUser: AuthUser!
     
-    if let url = NSURL(string: baseURL) {
+    if let url = NSURL(string: finalURL) {
       NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
         if let error = error {
           println("error")
         } else if let httpResponse = response as? NSHTTPURLResponse {
-          println(httpResponse.statusCode)
-          switch httpResponse.statusCode {
-          case 200...299:
-            authUser = GitHubJSONParser.authUserInfoFromJSONData(data)!
-            completionHandler(nil, authUser)
-          case 400...499:
-            println("400")
-          case 500...599:
-            println("500")
-          default:
-            println("default")
-          }
+            let rv = self.checkStatusCodes(httpResponse.statusCode)
+            if rv == "OK" {
+              authUser = GitHubJSONParser.authUserInfoFromJSONData(data)!
+              completionHandler(nil, authUser)
+            } else {
+              completionHandler(rv, nil)
+            }
+            println(rv)
         }
       }).resume()
     }
   }
 
-  
-  
-  
-  
-  
-  
+  class func checkStatusCodes(statusCode: Int) -> String {
+    var resultString: String
+    
+     switch statusCode {
+      case 200...299:
+        resultString = "OK"
+      case 400...499:
+        resultString = "Page not found"
+      case 500...599:
+        resultString = "Server issue occurred"
+      default:
+        resultString = "Request could not be completed"
+    }
+    return resultString
+  }
+
   
 }
 
-//  class func checkStatusCodes(statusCode: Int) {
-//    switch statusCode {
-//    case 200...299:
-//      completionHandler(nil,data)
-//    case 400...499:
-//      completionHandler("this is our fault", nil)
-//    case 500...599:
-//      completionHandler("this is the servers fault", nil)
-//    default:
-//      completionHandler("error occurred", nil)
-//  }
 
